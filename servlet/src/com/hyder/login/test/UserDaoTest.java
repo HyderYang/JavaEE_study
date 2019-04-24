@@ -20,6 +20,5 @@ public class UserDaoTest {
 		UserDao userDao = new UserDao();
 		User login = userDao.login(user);
 		System.out.println(login);
-
 	}
 }
