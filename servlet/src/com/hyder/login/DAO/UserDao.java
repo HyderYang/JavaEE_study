@@ -24,10 +24,9 @@ public class UserDao {
 					loginUser.getUsername(),
 					loginUser.getPassword()
 			);
+			return user;
 		} catch (DataAccessException e){
 			return null;
 		}
-
-		return user;
 	}
 }
