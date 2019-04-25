@@ -1,5 +1,7 @@
 package com.hyder.download;
 
+import com.hyder.download.utils.DownLoadUtils;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -35,6 +37,11 @@ public class Download extends HttpServlet {
 		resp.setHeader("content-type", mimeType);
 		// 响应头打开方式
 		resp.setHeader("content-disposition", "attachment;filename=" + filename);
+
+		// 中文文件名问题
+		// 获取 user-agent 请求头
+		String header = req.getHeader("user-agent");
+		filename = DownLoadUtils.getFileName(header, filename);
 
 		// 将输入流的数据写出达到输出流
 		ServletOutputStream outputStream = resp.getOutputStream();
