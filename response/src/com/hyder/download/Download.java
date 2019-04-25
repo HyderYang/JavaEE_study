@@ -35,13 +35,14 @@ public class Download extends HttpServlet {
 		String mimeType = servletContext.getMimeType(filename);
 		// 响应头类型
 		resp.setHeader("content-type", mimeType);
-		// 响应头打开方式
-		resp.setHeader("content-disposition", "attachment;filename=" + filename);
 
 		// 中文文件名问题
 		// 获取 user-agent 请求头
 		String header = req.getHeader("user-agent");
 		filename = DownLoadUtils.getFileName(header, filename);
+
+		// 响应头打开方式
+		resp.setHeader("content-disposition", "attachment;filename=" + filename);
 
 		// 将输入流的数据写出达到输出流
 		ServletOutputStream outputStream = resp.getOutputStream();
