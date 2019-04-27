@@ -11,6 +11,9 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+    <% System.out.println("jsp标签"); %>
+    
+    <% out.print("你好"); %>
+    <% out.print(request.getParameter("a")); %>
   </body>
 </html>
