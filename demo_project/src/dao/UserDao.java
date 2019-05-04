@@ -12,4 +12,5 @@ import java.util.List;
 public interface UserDao {
 	public List<User> findAll();
 
+	public User getUserByUsername(String username, String password);
 }
