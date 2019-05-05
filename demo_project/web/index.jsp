@@ -18,7 +18,7 @@
   <body>
   <div align="center">
   	<a
-      href="/project/UserListServlet" style="text-decoration:none;font-size:33px">查询所有用户信息
+      href="/project/userListServlet" style="text-decoration:none;font-size:33px">查询所有用户信息
 	</a>
   </div>
   </body>

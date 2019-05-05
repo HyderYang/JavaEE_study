@@ -1,6 +1,7 @@
 package web.servlet;
 
 import domain.User;
+import org.apache.commons.beanutils.BeanUtils;
 import service.UserService;
 import service.impl.UserServiceImpl;
 
@@ -10,17 +11,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
-@WebServlet("/userListServlet")
-public class UserListServlet extends HttpServlet {
+@WebServlet("/addUserServlet")
+public class AddUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserService service = new UserServiceImpl();
-		List<User> users = service.findAll();
+		request.setCharacterEncoding("utf-8");
+		Map<String, String[]> map = request.getParameterMap();
 
-		request.setAttribute("users", users);
-		request.getRequestDispatcher("/list.jsp")
-				.forward(request, response);
+		User user = new User();
+		try {
+			BeanUtils.populate(user, map);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		UserService service = new UserServiceImpl();
+		service.addUser(user);
+
+		response.sendRedirect("/project/userListServlet");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

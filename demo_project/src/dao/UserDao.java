@@ -13,4 +13,6 @@ public interface UserDao {
 	public List<User> findAll();
 
 	public User getUserByUsername(String username, String password);
+
+	public void addUser(User user);
 }
