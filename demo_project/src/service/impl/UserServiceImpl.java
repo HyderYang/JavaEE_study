@@ -30,5 +30,10 @@ public class UserServiceImpl implements UserService {
 		dao.addUser(user);
 	}
 
+	@Override
+	public void deleteUser(String id) {
+		dao.delUser(id);
+	}
+
 
 }

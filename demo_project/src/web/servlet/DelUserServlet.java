@@ -1,5 +1,8 @@
 package web.servlet;
 
+import service.UserService;
+import service.impl.UserServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +13,13 @@ import java.io.IOException;
 @WebServlet("/delUserServlet")
 public class DelUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 
+		String id = request.getParameter("id");
+		UserService service = new UserServiceImpl();
+		service.deleteUser(id);
+
+		response.sendRedirect("/project/userListServlet");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
