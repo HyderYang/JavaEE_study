@@ -1,5 +1,6 @@
 package service;
 
+import domain.PageBean;
 import domain.User;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface UserService {
 	public void deleteUser(String id);
 	public User findUser(int id);
 	public void updateUser(User user);
+	public PageBean<User> findUserByPage(String currentPage, String rows);
 }
