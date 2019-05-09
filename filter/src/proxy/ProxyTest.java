@@ -30,7 +30,7 @@ public class ProxyTest {
 				if (method.getName().equals("sale")){
 					double money = (double) args[0];
 					money = money * 20;
-					String invoke = (String) method.invoke(lenovo, args);
+					String invoke = (String) method.invoke(lenovo, money);
 					return invoke + "_鼠标";
 				} else {
 					Object invoke = method.invoke(lenovo, args);
